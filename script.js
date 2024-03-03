@@ -8,7 +8,6 @@ const canvas = document.querySelector("canvas"),
   saveImg = document.querySelector(".save-img"),
   ctx = canvas.getContext("2d");
 
-//global no se q wbda
 let prevMouseX,
   prevMouseY,
   snapshot,
@@ -25,7 +24,6 @@ let prevMouseX,
   }
   
 window.addEventListener("load", () => {
-  // setting canvas width/length.. offsetwidth/height returns viewable width/height of an element
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 });
@@ -39,7 +37,6 @@ const drawRect = (e) => {
 
 const drawCircle = (e) => {
   ctx.beginPath()
-  // tu mamá
   let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX), 2) + Math.pow((prevMouseY - e.offsetY), 2))
   ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI);
   fillColor.checked ? ctx.fill() : ctx.stroke();
@@ -71,8 +68,6 @@ const drawing = (e) => {
   ctx.putImageData(snapshot, 0, 0);
 
   if (selectedTool === "brush" || selectedTool === "eraser") {
-    // tu vieja
-    // tu mamá en tanga
     ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
     ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
     ctx.stroke();
@@ -87,7 +82,6 @@ const drawing = (e) => {
 
 toolBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    // removing no se q wbda
     document.querySelector(".options .active").classList.remove("active");
     btn.classList.add("active");
     selectedTool = btn.id;
@@ -101,13 +95,11 @@ colorBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelector(".options .selected").classList.remove("selected");
     btn.classList.add("selected");
-    // pasame esta
     selectedColor = window.getComputedStyle(btn).getPropertyValue("background-color");
   });
 });
 
 colorPicker.addEventListener("change", () => {
-  // tu vieja
   colorPicker.parentElement.style.background = colorPicker.value;
   colorPicker.parentElement.click();
 });
